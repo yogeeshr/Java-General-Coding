@@ -4,30 +4,30 @@ package common;
  * @author yogeesh.srkvs@gmail.com;
  *
  */
-public class Data {
+public class Data<T> {
 
-	Integer value = 10;
+	private T value = (T) new Integer(10);
 
 	/**
 	 * @param value
 	 */
-	public Data(Integer value) {
+	public Data(T value) {
 		super();
-		this.value = value;
+		this.value = (null==value)? this.value: value;
 	}
 
 	/**
 	 * @return the data
 	 */
-	public Integer getValue() {
+	public T getValue() {
 		return value;
 	}
 
 	/**
-	 * @param value the data to set
+	 * @param object the data to set
 	 */
-	public void setValue(Integer value) {
-		this.value = value;
+	public void setValue(Object object) {
+		this.value = (T) object;
 	}
 			
 }

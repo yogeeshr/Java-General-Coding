@@ -13,18 +13,18 @@ public class Node {
 	private Node prev;
 	
 	/* Data in the node */
-	private Data data;
+	private Data<?> data;
 	
 	/**
 	 * @return the data
 	 */
-	public Data getData() {
+	public Data<?> getData() {
 		return data;
 	}
 	/**
 	 * @param data the data to set
 	 */
-	public void setData(Data data) {
+	public void setData(Data<?> data) {
 		this.data = data;
 	}
 	
