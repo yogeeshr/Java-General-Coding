@@ -1,10 +1,15 @@
-package BInarySearchTree;
+package binarysearchtree;
 
 import java.util.Scanner;
 
 import common.Data;
 import common.Node;
 
+/**
+ * @author @author yogeesh.srkvs@gmail.com
+ * 
+ * An utility to mimic binary search tree
+ */
 public class BST {
 
 	public static void main(String args[]) {
@@ -102,7 +107,7 @@ class BinarySearchTree {
 	}
 	
 	/**
-	 * @param h
+	 * @param H
 	 * Utility to print root node
 	 */
 	public static void printRoot(Node H) {
