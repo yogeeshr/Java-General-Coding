@@ -24,7 +24,8 @@ public class BST {
 			System.out.println("#4. Pre Order Traverse ");
 			System.out.println("#5. Post Order Traverse ");
 			System.out.println("#6. Print Root ");
-			System.out.println("#7. Exit ");
+			System.out.println("#7. Height of Tree ");
+			System.out.println("#8. Exit ");
 			System.out.println("--------------------------------------");
 			
 			int choice = in.nextInt(), data=0;
@@ -64,6 +65,11 @@ public class BST {
 				break;
 				
 			case 7:
+				int height = BinarySearchTree.findHeight(H);
+				System.out.println("Height of tree : "+ height);
+				break;
+				
+			case 8:
 				System.out.println(" Thank You ");
 				System.exit(0);
 				break;
@@ -259,5 +265,25 @@ class BinarySearchTree {
 		BinarySearchTree.inorder(H.getPrev());
 		BinarySearchTree.inorder(H.getNext());
 		System.out.println(" "+H.getData().getValue()+" ");
+	}
+	
+	
+	/**
+	 * @param H
+	 * @return
+	 */
+	public static int findHeight(Node H) {
+		if (H==null) {
+			return 0;
+		}
+		
+		int leftSubTreeHeight = BinarySearchTree.findHeight(H.getPrev());
+		int rightSubTreeHeight = BinarySearchTree.findHeight(H.getNext());
+		
+		if (leftSubTreeHeight > rightSubTreeHeight) {
+			return (leftSubTreeHeight+1);			
+		}
+		
+		return (rightSubTreeHeight+1);
 	}
 }
