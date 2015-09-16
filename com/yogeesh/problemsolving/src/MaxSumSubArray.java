@@ -1,6 +1,6 @@
 
 /**
- * @author I306479
+ * @author yogeesh.srkvs@gmail.com
  *
  * The trick I guess is to find all sub sequence of positive sequences and to consider max among those
  */
