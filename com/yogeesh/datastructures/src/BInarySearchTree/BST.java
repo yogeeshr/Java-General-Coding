@@ -18,73 +18,86 @@ public class BST {
 		
 		while (true) {
 			System.out.println("--------------------------------------");
-			System.out.println("#1. Insert ");
-			System.out.println("#2. Delete ");
-			System.out.println("#3. In Order Traverse ");
-			System.out.println("#4. Pre Order Traverse ");
-			System.out.println("#5. Post Order Traverse ");
-			System.out.println("#6. Print Root ");
-			System.out.println("#7. Height of Tree ");
-			System.out.println("#8. Mirror of Tree ");
-			System.out.println("#9. Exit ");
+			System.out.println("#01. Insert ");
+			System.out.println("#02. Delete ");
+			System.out.println("#03. In Order Traverse ");
+			System.out.println("#04. Pre Order Traverse ");
+			System.out.println("#05. Post Order Traverse ");
+			System.out.println("#06. Print Root ");
+			System.out.println("#07. Height of Tree ");
+			System.out.println("#08. Mirror of Tree ");
+			System.out.println("#09. Level Order Traversal ");
+			System.out.println("#10. Spiral Traversal ");
+			System.out.println("#11. Exit ");
 			System.out.println("--------------------------------------");
+			System.out.println("Enter Choice (1, 2, 3 etc . . .) : ");
 			
 			int choice = in.nextInt(), data=0;
 			
 			switch (choice) {
 			
-			case 1:
-				System.out.println("Enter node value to be added :  ");
-				data = in.nextInt();
-				H = BinarySearchTree.insert(H, new Integer(data));
-				break;
-			
-			case 2:
-				System.out.println("Enter node value to be deleted :  ");
-				data = in.nextInt();
-				H = BinarySearchTree.delete(H, new Integer(data));
-				break;
+				case 1:
+					System.out.println("Enter node value to be added :  ");
+					data = in.nextInt();
+					H = BinarySearchTree.insert(H, new Integer(data));
+					break;
 				
-			case 3:
-				System.out.println(" In order traversal : ");
-				BinarySearchTree.inorder(H);
-				break;
-			
-			case 4:
-				System.out.println(" Pre order traversal : ");
-				BinarySearchTree.preorder(H);
-				break;
-			
-			case 5:
-				System.out.println(" Post order traversal : ");
-				BinarySearchTree.postorder(H);
-				break;
-			
-			case 6:
-				System.out.println(" Root Is : ");
-				BinarySearchTree.printRoot(H);
-				break;
+				case 2:
+					System.out.println("Enter node value to be deleted :  ");
+					data = in.nextInt();
+					H = BinarySearchTree.delete(H, new Integer(data));
+					break;
+					
+				case 3:
+					System.out.println(" In order traversal : ");
+					BinarySearchTree.inorder(H);
+					break;
 				
-			case 7:
-				int height = BinarySearchTree.findHeight(H);
-				System.out.println("Height of tree : "+ height);
-				break;
-			
-			case 8:
-				System.out.println(" Mirror Of Tree ");
-				Node M = BinarySearchTree.getMirrorTree(H, false);
-				BinarySearchTree.inorder(M);
-				break;
+				case 4:
+					System.out.println(" Pre order traversal : ");
+					BinarySearchTree.preorder(H);
+					break;
 				
-			case 9:
-				System.out.println(" Thank You ");
-				in.close();
-				System.exit(0);
-				break;
-			
-			default:
-				System.out.println("* * *  Enter right choice * * *");
-				break;
+				case 5:
+					System.out.println(" Post order traversal : ");
+					BinarySearchTree.postorder(H);
+					break;
+				
+				case 6:
+					System.out.println(" Root Is : ");
+					BinarySearchTree.printRoot(H);
+					break;
+					
+				case 7:
+					int height = BinarySearchTree.findHeight(H);
+					System.out.println("Height of tree : "+ height);
+					break;
+				
+				case 8:
+					System.out.println(" Mirror Of Tree ");
+					Node M = BinarySearchTree.getMirrorTree(H);
+					BinarySearchTree.inorder(M);
+					break;
+				
+				case 9:
+					System.out.println(" Level order traversal ");
+					BinarySearchTree.levelOrder(H);
+					break;
+					
+				case 10:
+					System.out.println(" Level order traversal ");
+					BinarySearchTree.spiralLevelOrder(H);
+					break;					
+					
+				case 11:
+					System.out.println(" Thank You ");
+					in.close();
+					System.exit(0);
+					break;
+				
+				default:
+					System.out.println("* * *  Enter right choice * * *");
+					break;
 			
 			}
 		}
@@ -122,9 +135,48 @@ class BinarySearchTree {
 	
 	/**
 	 * @param H
+	 * level order traversal
+	 */
+	public static void levelOrder(Node H) {
+		int height = BinarySearchTree.findHeight(H);
+		for (int i=1; i<=height; i++) {
+			printLevel(H, i, true);
+		}
+	}
+	
+	/**
+	 * @param H
+	 * level order spiral traversal
+	 */
+	public static void spiralLevelOrder(Node H) {
+		int height = BinarySearchTree.findHeight(H);
+		for (int i=1; i<=height; i++) {
+			printLevel(H, i, (i%2)!=0);
+		}
+	}
+
+	/**
+	 * @param H
+	 * @param i
+	 * Print given a level
+	 */
+	private static void printLevel(Node H, int i, boolean direction) {
+		if (H==null) {
+			return;
+		}
+		if (i==1) {
+			System.out.println(H.getData().getValue());
+			return;
+		}
+		printLevel(direction? H.getPrev() : H.getNext(), i-1, direction);
+		printLevel(direction? H.getNext() : H.getPrev(), i-1, direction);
+	}
+
+	/**
+	 * @param H
 	 * @return mirror tree of given tree
 	 */
-	public static Node getMirrorTree(Node H, boolean flag) {
+	public static Node getMirrorTree(Node H) {
 		if (null==H) {			
 			return null;
 		}
@@ -132,14 +184,12 @@ class BinarySearchTree {
 		Node temp=new Node();
 		Data data = new Data(H.getData().getValue());
 		temp.setData(data);
+		
+		Node temp1 = BinarySearchTree.getMirrorTree(H.getPrev());
+		Node temp2 = BinarySearchTree.getMirrorTree(H.getNext());
 
-		if (flag) {
-			temp.setPrev(getMirrorTree(H.getPrev(), !flag));
-			temp.setNext(getMirrorTree(H.getNext(), !flag));
-		} else {
-			temp.setPrev(getMirrorTree(H.getNext(), flag));
-			temp.setNext(getMirrorTree(H.getPrev(), flag));
-		}
+		temp.setPrev(temp2);
+		temp.setNext(temp1);
 		
 		return temp;		
 	}

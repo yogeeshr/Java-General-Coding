@@ -1,4 +1,8 @@
 
+/**
+ * @author yogeesh.srkvs@gmail.com
+ *
+ */
 public class FindAllSubSets {
 
 	public static void main(String []args) {
