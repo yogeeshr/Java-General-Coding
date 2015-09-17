@@ -25,7 +25,8 @@ public class BST {
 			System.out.println("#5. Post Order Traverse ");
 			System.out.println("#6. Print Root ");
 			System.out.println("#7. Height of Tree ");
-			System.out.println("#8. Exit ");
+			System.out.println("#8. Mirror of Tree ");
+			System.out.println("#9. Exit ");
 			System.out.println("--------------------------------------");
 			
 			int choice = in.nextInt(), data=0;
@@ -68,9 +69,16 @@ public class BST {
 				int height = BinarySearchTree.findHeight(H);
 				System.out.println("Height of tree : "+ height);
 				break;
-				
+			
 			case 8:
+				System.out.println(" Mirror Of Tree ");
+				Node M = BinarySearchTree.getMirrorTree(H, false);
+				BinarySearchTree.inorder(M);
+				break;
+				
+			case 9:
 				System.out.println(" Thank You ");
+				in.close();
 				System.exit(0);
 				break;
 			
@@ -112,6 +120,30 @@ class BinarySearchTree {
 		return H;
 	}
 	
+	/**
+	 * @param H
+	 * @return mirror tree of given tree
+	 */
+	public static Node getMirrorTree(Node H, boolean flag) {
+		if (null==H) {			
+			return null;
+		}
+		
+		Node temp=new Node();
+		Data data = new Data(H.getData().getValue());
+		temp.setData(data);
+
+		if (flag) {
+			temp.setPrev(getMirrorTree(H.getPrev(), !flag));
+			temp.setNext(getMirrorTree(H.getNext(), !flag));
+		} else {
+			temp.setPrev(getMirrorTree(H.getNext(), flag));
+			temp.setNext(getMirrorTree(H.getPrev(), flag));
+		}
+		
+		return temp;		
+	}
+
 	/**
 	 * @param H
 	 * Utility to print root node

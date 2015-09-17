@@ -31,6 +31,7 @@ public class FindPermutationsOfString {
 		Scanner in = new Scanner(System.in);
 		System.out.println("Enter String to permute");
 		StringBuffer string = new StringBuffer(in.nextLine());
+		in.close();
 		FindPermutationsOfString.permute(string, 0);
 	}
 

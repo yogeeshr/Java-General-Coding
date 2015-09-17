@@ -8,7 +8,7 @@ public class MaxSumSubArray {
 	
 	public static void main(String []args) {
 		
-		int arr[] = {-2000, -1, 2000, -4000}, sum=0, start=0, end=0, maxsum=0, tempStrt=0;
+		int arr[] = {-2000, -1, 2000, -4000}, sum=0, start=-1, end=0, maxsum=0, tempStrt=0;
 		
 		for (int index=0; index < arr.length; index++) {
 			
@@ -27,9 +27,9 @@ public class MaxSumSubArray {
 			
 		}
 				
-		System.out.println("Max Sub Array is : ");
+		System.out.println("Max Sub Array is ("+start+" to "+end+")  : ");
 		
-		for (int j=start; j<=end; j++) {
+		for (int j=start; j<=end && start>=0; j++) {
 			System.out.println(arr[j]+" ");
 		}
 		
