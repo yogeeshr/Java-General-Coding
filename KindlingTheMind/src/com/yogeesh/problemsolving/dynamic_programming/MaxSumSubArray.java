@@ -9,7 +9,7 @@ public class MaxSumSubArray {
 
     public static void main(String []args) {
 
-        int arr[] = {-2000, -1, 2000, -4000}, sum=0, start=-1, end=0, maxsum=0, tempStrt=0;
+        int arr[] = {-2000, -1, 2000, -4000, 10000, 15000, 1000}, sum=0, start=-1, end=0, maxsum=0, tempStrt=0;
 
         for (int index=0; index < arr.length; index++) {
 
