@@ -14,7 +14,7 @@ import java.util.List;
  *  --> #3a. If odd number length, add 1 to middle element and propogate carry to right and left halves
  *  --> #3b. If even number length,  add 1 to left half and right half from middle and propogate carry
  */
-public class FIndNextPalindrome {
+public class FindNextPalindromeNumber {
 
     /**
      * Method to get next palindrome
@@ -108,7 +108,7 @@ public class FIndNextPalindrome {
     public static void main(String[] args) {
         int number = 1929292, nextPalindrome=0;
 
-        nextPalindrome=FIndNextPalindrome.getNextPalindrome(number);
+        nextPalindrome= FindNextPalindromeNumber.getNextPalindrome(number);
 
         System.out.println(nextPalindrome);
 
