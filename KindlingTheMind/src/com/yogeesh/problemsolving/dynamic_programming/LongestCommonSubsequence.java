@@ -1,4 +1,4 @@
-package com.yogeesh.problemsolving.general;
+package com.yogeesh.problemsolving.dynamic_programming;
 
 /**
  * Created by yogeesh.srkvs@gmail.com on 8/15/17.
