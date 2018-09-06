@@ -1,12 +1,11 @@
 package com.yogeesh.problemsolving.general;
-import java.util.Scanner;
 
 
 /**
  * @author yogeesh.srkvs@gmail.com
  *
  */
-public class FindPermutationsOfString {
+public class FindMedianOfTwoSortedArray {
 
     public static void swap(StringBuffer str, int i, int j) {
         char temp=str.charAt(i);
@@ -29,11 +28,8 @@ public class FindPermutationsOfString {
     }
 
     public static void main(String []args) {
-        Scanner in = new Scanner(System.in);
-        System.out.println("Enter String to permute");
-        StringBuffer string = new StringBuffer(in.nextLine());
-        in.close();
-        FindPermutationsOfString.permute(string, 0);
+        // yet to complete
+        int [] a={1,2,3,4,5,6}, b={4,5,6,7};
     }
 
 }

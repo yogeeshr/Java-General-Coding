@@ -14,6 +14,7 @@ import java.util.List;
  *  --> #3a. If odd number length, add 1 to middle element and propogate carry to right and left halves
  *  --> #3b. If even number length,  add 1 to left half and right half from middle and propogate carry
  */
+
 public class FindNextPalindromeNumber {
 
     /**
@@ -54,7 +55,7 @@ public class FindNextPalindromeNumber {
         // Reverse array elemnts of list
         Collections.reverse(arrList);
 
-        arr = (String[]) arrList.toArray();
+        arr = (String []) arrList.toArray();
 
         String middle = "";
         String firstHalf = "";

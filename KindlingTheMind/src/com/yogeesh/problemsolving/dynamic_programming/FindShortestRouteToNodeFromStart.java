@@ -80,7 +80,7 @@ public class FindShortestRouteToNodeFromStart {
         }
         System.out.println("- - - ");
 
-        System.out.println("\n- - - - -\nMinimum cost is (0,0) --> (2,2) "+minCost(matrix, 2, 2)+"\n- - - - -\n");
+        System.out.println("\n- - - - -\nMinimum cost is (0,0) --> (3,3) "+minCost(matrix, 3, 3)+"\n- - - - -\n");
 
     }
 

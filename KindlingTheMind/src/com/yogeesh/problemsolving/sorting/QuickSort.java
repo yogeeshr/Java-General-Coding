@@ -1,4 +1,5 @@
 package com.yogeesh.problemsolving.sorting;
+import org.json.JSONArray;
 
 /**
  * @author yogeesh.srkvs@gmail.com
@@ -76,11 +77,17 @@ public class QuickSort {
     }
 
     public static void main(String args[]) {
-        int a[] = {8, 1, 20, -1 , -3, 50, 100, 10};
-        System.out.println("Array elements before sorting : ");
-        QuickSort.printElements(a);
-        QuickSort.sort(a, 0, a.length-1);
-        System.out.println("\nArray elements after sorting : ");
-        QuickSort.printElements(a);
+        try {
+
+            String data = "[{\"userName\": \"sandeep\",\"age\":30},{\"userName\": \"vivan\",\"age\":5}]  ";
+            JSONArray jsonArr = new JSONArray(data);
+
+            jsonArr.length();
+
+            System.out.println(jsonArr.length());
+
+        } catch ( Exception ex ) {
+            ex.printStackTrace();
+        }
     }
 }
