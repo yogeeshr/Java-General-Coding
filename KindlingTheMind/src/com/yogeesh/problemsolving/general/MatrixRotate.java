@@ -7,40 +7,40 @@ package com.yogeesh.problemsolving.general;
 
 public class MatrixRotate {
     public static void main(String[] args) {
-        int[][] mat = { {0,0,0,0},
-                        {6,1,1,1},
-                        {2,2,2,2},
-                        {3,3,3,3}
-                    };
+        int[][] mat = {{0, 0, 0, 0},
+                {6, 1, 1, 1},
+                {2, 2, 2, 2},
+                {3, 3, 3, 3}
+        };
 
 
-        int rows=4, cols=4;
+        int rows = 4, cols = 4;
 
-        for (int i=0; i<rows/2; i++) {
-            for (int j=i; j<rows-i-1; j++) {
-                int n=rows;
+        for (int i = 0; i < rows / 2; i++) {
+            for (int j = i; j < rows - i - 1; j++) {
+                int n = rows;
                 int temp1 = mat[i][j];
-                int temp2 = mat[n-j-1][i];
-                int temp3 = mat[n-i-1][n-j-1];
-                int temp4 = mat[j][n-i-1];
+                int temp2 = mat[n - j - 1][i];
+                int temp3 = mat[n - i - 1][n - j - 1];
+                int temp4 = mat[j][n - i - 1];
 
                 System.out.println("========");
                 System.out.println("Rotating nodes :");
                 System.out.println("========");
-                System.out.print("("+i+","+j+")\t");
-                System.out.print("("+(n-j-1)+","+i+")\t");
-                System.out.print("("+(n-i-1)+","+(n-j-1)+")\t");
-                System.out.println("("+j+","+(n-i-1)+")");
+                System.out.print("(" + i + "," + j + ")\t");
+                System.out.print("(" + (n - j - 1) + "," + i + ")\t");
+                System.out.print("(" + (n - i - 1) + "," + (n - j - 1) + ")\t");
+                System.out.println("(" + j + "," + (n - i - 1) + ")");
                 System.out.print("========");
                 System.out.println("");
 
-                System.out.println("Elements : "+temp1+"\t"+temp2+"\t"+temp3+"\t"+temp4);
+                System.out.println("Elements : " + temp1 + "\t" + temp2 + "\t" + temp3 + "\t" + temp4);
 
                 // Change this part if it is clock wise and also if degree is 270 etc..
-                mat[n-j-1][i]=temp1;
-                mat[n-i-1][n-j-1]=temp2;
-                mat[j][n-i-1]=temp3;
-                mat[i][j]=temp4;
+                mat[n - j - 1][i] = temp1;
+                mat[n - i - 1][n - j - 1] = temp2;
+                mat[j][n - i - 1] = temp3;
+                mat[i][j] = temp4;
 
 //                mv (i,j) --> (n-j+1, i)
 //                mv (n-j+1, i) --> (n-i+1, n-i+1)
@@ -56,9 +56,9 @@ public class MatrixRotate {
             }
 
             System.out.println("Elements rotation interim matrix");
-            for (int il=0; il<rows; il++) {
-                for (int jl=0; jl<cols; jl++) {
-                    System.out.print(mat[il][jl]+"\t");
+            for (int il = 0; il < rows; il++) {
+                for (int jl = 0; jl < cols; jl++) {
+                    System.out.print(mat[il][jl] + "\t");
                 }
                 System.out.println("");
             }
@@ -67,9 +67,9 @@ public class MatrixRotate {
 
         System.out.println("");
         System.out.println("Resultant matrix");
-        for (int il=0; il<rows; il++) {
-            for (int jl=0; jl<cols; jl++) {
-                System.out.print(mat[il][jl]+"\t");
+        for (int il = 0; il < rows; il++) {
+            for (int jl = 0; jl < cols; jl++) {
+                System.out.print(mat[il][jl] + "\t");
             }
             System.out.println("");
         }

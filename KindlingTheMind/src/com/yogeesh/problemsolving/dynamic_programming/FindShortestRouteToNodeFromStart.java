@@ -7,17 +7,18 @@ public class FindShortestRouteToNodeFromStart {
 
     /**
      * Minimum of 3 numbers . . .
+     *
      * @param a
      * @param b
      * @param c
      * @return
      */
     public static int min(int a, int b, int c) {
-        if (a<b && a<c) {
+        if (a < b && a < c) {
             return a;
         }
 
-        if (b<c) {
+        if (b < c) {
             return b;
         }
 
@@ -26,6 +27,7 @@ public class FindShortestRouteToNodeFromStart {
 
     /**
      * Find Minimum cost of reaching a node
+     *
      * @param matrix
      * @param row
      * @param col
@@ -33,18 +35,18 @@ public class FindShortestRouteToNodeFromStart {
      */
     public static int minCost(int[][] matrix, int row, int col) {
 
-        if (row<0 || col<0) {
+        if (row < 0 || col < 0) {
             //Integer Max
             return 2137483647;
         }
 
-        if (row==0 && col==0) {
+        if (row == 0 && col == 0) {
             return matrix[row][col];
         }
 
-        int diagonalPrev = minCost(matrix,row-1,col-1);
-        int left = minCost(matrix,row-1,col);
-        int up = minCost(matrix, row, col-1);
+        int diagonalPrev = minCost(matrix, row - 1, col - 1);
+        int left = minCost(matrix, row - 1, col);
+        int up = minCost(matrix, row, col - 1);
 
         int minNeighbour = min(diagonalPrev, left, up);
 
@@ -61,26 +63,26 @@ public class FindShortestRouteToNodeFromStart {
 
     public static void main(String[] args) {
 
-        int[][] matrix = {  {0,2,1,3,4},
-                            {1,7,1,8,9},
-                            {1,10,11,12,13},
-                            {14,15,16,17,18},
-                            {20,21,22,23,24}
-                        };
+        int[][] matrix = {{0, 2, 1, 3, 4},
+                {1, 7, 1, 8, 9},
+                {1, 10, 11, 12, 13},
+                {14, 15, 16, 17, 18},
+                {20, 21, 22, 23, 24}
+        };
 
-        int rows=5, cols=5;
+        int rows = 5, cols = 5;
 
         System.out.println("Matrix is : ");
         System.out.println("- - - ");
-        for (int i=0; i<rows; i++) {
-            for (int j=0; j<rows; j++) {
-                System.out.print(matrix[i][j]+"\t");
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < rows; j++) {
+                System.out.print(matrix[i][j] + "\t");
             }
             System.out.println();
         }
         System.out.println("- - - ");
 
-        System.out.println("\n- - - - -\nMinimum cost is (0,0) --> (3,3) "+minCost(matrix, 3, 3)+"\n- - - - -\n");
+        System.out.println("\n- - - - -\nMinimum cost is (0,0) --> (3,3) " + minCost(matrix, 3, 3) + "\n- - - - -\n");
 
     }
 

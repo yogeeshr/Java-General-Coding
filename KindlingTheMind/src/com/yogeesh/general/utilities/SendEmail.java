@@ -1,5 +1,8 @@
 //package com.yogeesh.general.utilities;
 //
+/**
+ * @author yogeesh.srkvs@gmail.com
+ */
 //import java.util.*;
 //import javax.mail.*;
 //import javax.mail.internet.*;

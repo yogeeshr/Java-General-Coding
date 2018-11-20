@@ -20,26 +20,23 @@ public class WordBreak {
         dictSet.add("inmobi");
     }
 
-    public static  void getMeStatementWithSpace(String str, int length, String result) {
+    public static void getMeStatementWithSpace(String str, int length, String result) {
 
         //Process all prefixes one by one
-        for (int i=1; i<=str.length(); i++)
-        {
-            String prefix = str.substring(0,i);
+        for (int i = 1; i <= str.length(); i++) {
+            String prefix = str.substring(0, i);
 
 //            System.out.println("Prefix is : "+prefix);
 
 //            System.out.println(result+" ");
 
             // if dictonary has to index in it , check for rest of string chunks
-            if (dictSet.contains(prefix))
-            {
+            if (dictSet.contains(prefix)) {
                 // if no more elements are there, print it
-                if (i == length)
-                {
+                if (i == length) {
                     // add this element to previous prefix
                     result += prefix;
-                    System.out.println("Result : "+result+" ");
+                    System.out.println("Result : " + result + " ");
                     return;
                 }
 
@@ -56,7 +53,7 @@ public class WordBreak {
     }
 
     public static void main(String[] args) {
-        WordBreak.getMeStatementWithSpace("ilikeinmobi", "ilikeinmobi".length(),"");
+        WordBreak.getMeStatementWithSpace("ilikeinmobi", "ilikeinmobi".length(), "");
     }
 
 }

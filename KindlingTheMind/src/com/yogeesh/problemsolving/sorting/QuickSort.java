@@ -1,26 +1,25 @@
 package com.yogeesh.problemsolving.sorting;
+
 import org.json.JSONArray;
 
 /**
  * @author yogeesh.srkvs@gmail.com
- *
  */
 public class QuickSort {
 
     /**
      * @param a
      * @param least
-     * @param highest
-     * Sort function
+     * @param highest Sort function
      */
     private static void sort(int[] a, int least, int highest) {
-        if (least>highest) {
+        if (least > highest) {
             return;
         }
 
         int partition = QuickSort.getPartition(a, least, highest);
-        QuickSort.sort(a, least, partition-1);
-        QuickSort.sort(a, partition+1, highest);
+        QuickSort.sort(a, least, partition - 1);
+        QuickSort.sort(a, partition + 1, highest);
     }
 
     /**
@@ -32,20 +31,20 @@ public class QuickSort {
     private static int getPartition(int[] a, int least, int highest) {
 
         //taking first element as pivot
-        int pivot=least, i=least+1, j=highest;
+        int pivot = least, i = least + 1, j = highest;
 
         while (true) {
             //go on till you get an element greater than pivot
-            while (i<=highest && a[i]<=a[pivot]) {
+            while (i <= highest && a[i] <= a[pivot]) {
                 i++;
             }
 
             //go on till you get an element lesser than pivot
-            while (j>=least && a[j]>a[pivot]) {
+            while (j >= least && a[j] > a[pivot]) {
                 j--;
             }
 
-            if (i<j){
+            if (i < j) {
                 QuickSort.swap(a, i, j);
             } else {
                 QuickSort.swap(a, least, j);
@@ -57,22 +56,20 @@ public class QuickSort {
     /**
      * @param a
      * @param i
-     * @param j
-     * Utility to swap elements in the array
+     * @param j Utility to swap elements in the array
      */
     private static void swap(int[] a, int i, int j) {
-        int temp=a[i];
-        a[i]=a[j];
-        a[j]=temp;
+        int temp = a[i];
+        a[i] = a[j];
+        a[j] = temp;
     }
 
     /**
-     * @param a
-     * Utility to print array elements
+     * @param a Utility to print array elements
      */
     private static void printElements(int[] a) {
-        for (int index=0; index<a.length; index++) {
-            System.out.print(a[index]+" ");
+        for (int index = 0; index < a.length; index++) {
+            System.out.print(a[index] + " ");
         }
     }
 
@@ -86,7 +83,7 @@ public class QuickSort {
 
             System.out.println(jsonArr.length());
 
-        } catch ( Exception ex ) {
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
