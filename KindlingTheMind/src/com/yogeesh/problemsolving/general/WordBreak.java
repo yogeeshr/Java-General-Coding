@@ -1,6 +1,10 @@
 package com.yogeesh.problemsolving.general;
 
+import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Field;
+import java.net.URLEncoder;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -52,8 +56,33 @@ public class WordBreak {
 
     }
 
-    public static void main(String[] args) {
+    /**
+     * Method to trim and lower case a string
+     *
+     * @param string
+     * @return
+     */
+    public static String trimAndLower(String string) {
+
+        if (Objects.isNull(string)) {
+            return "test";
+        }
+
+        String queryParam = string.toLowerCase().replaceAll("\\s", "");
+
+        try {
+            queryParam = URLEncoder.encode(queryParam, "UTF-8");
+        } catch (UnsupportedEncodingException ex) {
+            queryParam="test";
+        }
+
+        return (queryParam);
+    }
+
+    public static void main(String[] args) throws ClassNotFoundException {
         WordBreak.getMeStatementWithSpace("ilikeinmobi", "ilikeinmobi".length(), "");
+        System.out.println(WordBreak.trimAndLower("adonai%2Ftws"));
+
     }
 
 }

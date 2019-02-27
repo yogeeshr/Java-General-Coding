@@ -50,14 +50,6 @@ public class FindShortestRouteToNodeFromStart {
 
         int minNeighbour = min(diagonalPrev, left, up);
 
-//        if (minNeighbour==diagonalPrev) {
-//            System.out.print("("+(row-1)+", "+(col-1)+")\t");
-//        } else if (minNeighbour==left) {
-//            System.out.print("("+(row-1)+", "+(col)+")\t");
-//        } else if (minNeighbour==up) {
-//            System.out.print("("+(row)+", "+(col-1)+")\t");
-//        }
-
         return (matrix[row][col] + minNeighbour);
     }
 

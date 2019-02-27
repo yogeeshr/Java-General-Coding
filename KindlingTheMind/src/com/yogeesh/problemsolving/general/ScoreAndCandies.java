@@ -38,42 +38,53 @@ public class ScoreAndCandies {
                 if (candies[i] == -1) {
                     candies[i] = 1;
                 }
-                candies[i - 1] = candies[i] + 1;
+
+                // to handle condition like 1, 2, 3, 4, 3, 2 ----- here 4 should get 4 candies from increasing
+                // sequence than 3 candies due to decreasing sequence
+                if (candies[i - 1] < candies[i] + 1) {
+                    candies[i - 1] = candies[i] + 1;
+                }
+
                 --i;
             }
         }
 
-        // Increasing same numbered sequences . . .
-        for (int i = 0; i < candies.length; i++) {
-            while (i < candies.length - 1 && scores[i] == scores[i + 1]) {
-                if (candies[i] == -1) {
-                    ++i;
-                    continue;
+        // Same score
+        for (int i = candies.length - 1; i > 0; i--) {
+            int start=-1, end=-1;
+
+            if(scores[i] != scores[i - 1]) {
+                continue;
+            }
+
+            while (i>0 && scores[i] == scores[i - 1]) {
+                if (end == -1) {
+                    end = i;
                 }
-                candies[i + 1] = candies[i];
+                --i;
+            }
+
+            start=i;
+
+            int candiesSame=-1;
+
+            if (candies[start]>candies[end]) {
+                candiesSame=candies[start];
+            } else {
+                candiesSame=candies[end];
+            }
+
+            candiesSame = (candiesSame!=-1)? candiesSame: 1;
+
+            i=start;
+
+            while (i!=end+1) {
+                candies[i]=candiesSame;
                 ++i;
             }
-        }
 
-        // Decreasing same numbered sequences . . .
-        for (int i = candies.length - 1; i > 0; i--) {
-            while (i > 0 && scores[i] == scores[i - 1]) {
-                if (candies[i] == -1) {
-                    --i;
-                    continue;
-                }
-                candies[i - 1] = candies[i];
-                --i;
-            }
+            i=start-1;
         }
-
-        // If all same number ....
-        for (int i = candies.length - 1; i >= 0; i--) {
-            if (candies[i] == -1) {
-                candies[i] = 1;
-            }
-        }
-
 
         return candies;
 
@@ -82,7 +93,9 @@ public class ScoreAndCandies {
     public static void main(String[] args) {
 //        int[] scores = {5, 5, 5, 5, 4, 3, 2, 1, 5, 4, 1, 2, 3, 4, 5, 5};
 
-        int[] scores = {6, 5, 5, 5, 5, 1};
+        int[] scores = {6, 6, 6, 6, 6, 10, 9 , 8, 11, 2, 5, 7, 6, 5, 5, 5, 5, 1, 10, 10, 10, 10};
+
+//        int[] scores = {1, 2, 3, 4, 5, 4, 3, 2, 1, 6, 7, 5, 5};
 
         int[] candies = ScoreAndCandies.getCandiesToDistribute(scores);
 

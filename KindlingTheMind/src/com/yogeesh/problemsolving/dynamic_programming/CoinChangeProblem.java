@@ -60,6 +60,9 @@ public class CoinChangeProblem {
         for (int i = 0; i < runningSolution.length; i++) {
             System.out.print(runningSolution[i] + "");
         }
+
+        System.out.println();
+
         return runningSolution[n];
     }
 
@@ -91,10 +94,10 @@ public class CoinChangeProblem {
         int denomination = 5;
 
         int ways = CoinChangeProblem.getWaysOfFormingDenomination(coins, denomination);
-        System.out.println(ways);
+        System.out.println("Ways " + ways);
 
         ways = CoinChangeProblem.getWaysSpaceEfficient(coins, coins.length, denomination);
-        System.out.println(ways);
+        System.out.println("Ways"+ ways);
 
         int minWays = CoinChangeProblem.minNumberOfCoins(coins, coins.length, denomination);
         System.out.println("Min Coins to Sum " + minWays);

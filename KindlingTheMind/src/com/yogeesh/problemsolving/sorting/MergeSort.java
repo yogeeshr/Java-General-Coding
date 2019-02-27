@@ -24,7 +24,7 @@ public class MergeSort {
             int m = (i + j) / 2;
             MergeSort.sort(a, i, m);
             MergeSort.sort(a, m + 1, j);
-            tempArr = MergeSort.merge(tempArr, i, m, j);
+            MergeSort.merge(a, i, m, j);
         }
     }
 
@@ -35,7 +35,7 @@ public class MergeSort {
         //length of right array
         b = m - e;
 
-        int[] lArr = new int[a], rArr = new int[b];
+        int[] lArr = new int[m-l+1], rArr = new int[e-m];
 
         for (int index = 0; index < a; index++) {
             lArr[index] = arr[l + index];
@@ -49,6 +49,7 @@ public class MergeSort {
 
         while (i < lArr.length && j < rArr.length) {
             if (lArr[i] < rArr[j]) {
+                System.out.println(lArr[i++]);
                 arr[d++] = lArr[i++];
             } else {
                 arr[d++] = rArr[j++];
